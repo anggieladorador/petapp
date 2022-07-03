@@ -57,18 +57,31 @@ const App = () => {
   };
 
   const addToCard = (product: Product) => {
-    // if there is already that product, updates is Qty
     const prevProductList = chosenProducts.filter(
       (p) => p.code !== product.code
     );
-    setChosenProducts([...prevProductList, product]);
+
+    if (product.qty === 0) {
+      setChosenProducts(prevProductList);
+    } else {
+      // if there is already that product, updates is Qty
+      setChosenProducts([...prevProductList, product]);
+    }
   };
 
   return (
     <>
-      <Header onSearch={onSearch} productList={chosenProducts} />
+      <Header
+        onSearch={onSearch}
+        productList={chosenProducts}
+        addProduct={(p) => addToCard(p)}
+      />
       <section>
-        <Drawer categories={categories} onClick={(c) => onClick(c)} />
+        <Drawer
+          categories={categories}
+          onClick={(c) => onClick(c)}
+          selectedCategory={selectedCategory}
+        />
         <Content
           selectedCategory={selectedCategory}
           keyword={keyword}

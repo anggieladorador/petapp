@@ -19,5 +19,5 @@ export interface Product {
   stock: number;
   category: Category;
   attribute: Attribute[];
-  qty?: number;
+  qty: number;
 }

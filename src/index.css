@@ -39,15 +39,19 @@ h1,h2,h3,h4,h5{
   align-items: center;
   position: relative;
 }
+
 .bag__container{
   position: absolute;
-  top:95px;
+  top:84px;
   right: 0;
   display: none;
   background-color: white;
   box-shadow: 0px 2px 10px -5px rgb(0 0 0 / 75%);
   border-radius:0 0 8px 8px;
   padding:8px;
+}
+.cart{
+  cursor:pointer
 }
 
 input{
@@ -79,8 +83,10 @@ section {
   padding: 12px;
 }
 .sidebar__header {
-  display: grid;
-  grid-template-columns: auto auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+
 }
 .sidebar__title{
   color:white;
@@ -91,7 +97,7 @@ section {
   display: grid;
   gap: 8px;
   list-style: none;
-  justify-content: start;
+  justify-content:stretch;
   padding: 0;
 }
 .content {
@@ -110,7 +116,11 @@ section {
 .article__image-container{
   width: 300px;
   height: 400px;
+}
 
+.article__action{
+  display: flex;
+  gap: 4px;
 }
 img{
   max-width: 100%;
@@ -172,13 +182,31 @@ img{
   padding:12px 16px;
   border-radius: 8px;
   background-color: #CEC2FF;
+  cursor: pointer;
 }
 .btn:hover{
   background-color: #B3B3F1 ;
   transition: ease .2;
+  color:white;
+}
+.icon__button{
+  padding:8px;
 }
 
+.sidebar__menu-item{
+  width: 100%;
+  color: #9898EC;
+  font-weight: 400;
+  font-size: 16px;
+  
+}
+
+.sidebar__menu-item--active{
+  background-color: #B3B3F1;
+  color:white
+}
 .modal__footer {
   display:flex;
   justify-content: space-around;
 }
+

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { TalanaService } from "../services/talana.services";
 import { Category, Product } from "../types/category.interface";
 import Fuse from "fuse.js";
+import { ButtonClasses, IconButton } from "./Button.component";
 
 const talana = new TalanaService();
 
@@ -85,12 +86,11 @@ const Content = ({
                 defaultValue={1}
                 onChange={(e) => setProductQty(+e.target.value)}
               />
-              <button
-                id="cart"
+              <IconButton
+                variant={ButtonClasses.icon}
+                icon="shopping_cart"
                 onClick={() => addProduct({ ...p, qty: productQty })}
-              >
-                add
-              </button>
+              />
             </div>
           </div>
         ))}
