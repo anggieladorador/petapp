@@ -17,7 +17,22 @@ const App = () => {
     order: 0,
   });
   const [chosenProducts, setChosenProducts] = useState<Product[]>([]);
-  const [chosenProductToShow, setchosenProductToShow] = useState<Product>();
+  const [chosenProductToShow, setchosenProductToShow] = useState<Product>({
+    abstract: "",
+    category: {
+      id: 0,
+      name: "",
+      order: 0,
+    },
+    attribute: [],
+    code: "",
+    description: "",
+    name: "",
+    photo: "",
+    price: 0,
+    stock: 0,
+    qty: 0,
+  });
   const [isModalOpen, setisModalOpen] = useState(false);
 
   useEffect(() => {
@@ -65,6 +80,7 @@ const App = () => {
         open={isModalOpen}
         onClose={() => setisModalOpen(false)}
         product={chosenProductToShow}
+        addProduct={(p) => addToCard(p)}
       />
     </>
   );

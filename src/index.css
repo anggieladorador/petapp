@@ -131,6 +131,7 @@ img{
     border-radius: 20px;
     display: flex;
     flex-direction: column;
+    gap:24px;
 }
 .modal__product-detail{
   display: flex;
@@ -162,4 +163,22 @@ img{
 
 .product__name-text{
   font-weight: 500;
+}
+
+/* buttons */
+
+.btn {
+  border:2px solid #BEADFF;
+  padding:12px 16px;
+  border-radius: 8px;
+  background-color: #CEC2FF;
+}
+.btn:hover{
+  background-color: #B3B3F1 ;
+  transition: ease .2;
+}
+
+.modal__footer {
+  display:flex;
+  justify-content: space-around;
 }
