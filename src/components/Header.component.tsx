@@ -38,11 +38,12 @@ const Header = ({ onSearch, productList, addProduct }: HeaderProps) => {
           type="text"
           name="search"
           id="search"
+          placeholder="Buscar"
           value={value}
           onChange={(e) => onChange(e.target.value)}
         />
         <span
-          className="material-icons cart"
+          className="material-icons clickeable"
           onClick={() => setIsBagOpen(!isBagOpen)}
         >
           shopping_bag
