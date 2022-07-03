@@ -1,7 +1,8 @@
 import { Box, Modal } from "@material-ui/core";
 import { useState } from "react";
+import { formatPrice } from "../common/utils";
 import { Product } from "../types/category.interface";
-import Button from "./Button.component";
+import Button, { ButtonClasses } from "./Button.component";
 
 type ModalProps = {
   open: boolean;
@@ -31,7 +32,9 @@ const ModalComponent = ({ open, product, onClose, addProduct }: ModalProps) => {
                 {product?.name}
               </span>
               <span className="product__text">cod: {product?.code}</span>
-              <span className="product__text">{product?.price}</span>
+              <span className="product__text">
+                {formatPrice(product?.price)}
+              </span>
               <div className="modal__action">
                 <span>Cantidad:</span>
                 <input
@@ -47,8 +50,16 @@ const ModalComponent = ({ open, product, onClose, addProduct }: ModalProps) => {
             <span className="modal__product-abstract">{product?.abstract}</span>
           </div>
           <div className="modal__footer">
-            <Button text="Seguir comprando" onClick={onClose} />
-            <Button text="Agregar al carro" onClick={handleAddingProduct} />
+            <Button
+              text="Seguir comprando"
+              variant={ButtonClasses.modal}
+              onClick={onClose}
+            />
+            <Button
+              text="Agregar al carro"
+              variant={ButtonClasses.modal}
+              onClick={handleAddingProduct}
+            />
           </div>
         </div>
       </>

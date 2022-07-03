@@ -175,6 +175,7 @@ img{
   font-weight: 500;
 }
 
+
 /* buttons */
 
 .btn {
@@ -183,12 +184,26 @@ img{
   border-radius: 8px;
   background-color: #CEC2FF;
   cursor: pointer;
+
 }
 .btn:hover{
   background-color: #B3B3F1 ;
   transition: ease .2;
   color:white;
 }
+
+.modal__button{
+  font-weight: bold;
+  background-color: #B3B3F1;
+  color:white;
+}
+.modal__button:hover{
+  font-weight: bold;
+  color: #B3B3F1;
+  background-color:white;
+}
+
+
 .icon__button{
   padding:8px;
 }
@@ -196,7 +211,7 @@ img{
 .sidebar__menu-item{
   width: 100%;
   color: #9898EC;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 16px;
   
 }
