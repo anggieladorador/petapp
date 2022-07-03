@@ -8,12 +8,21 @@ const talana = new TalanaService();
 type ContentProps = {
   selectedCategory?: Category;
   keyword: string;
+  onClick: (product: Product) => void;
+  addProduct: (product: Product) => void;
 };
-const Content = ({ selectedCategory, keyword }: ContentProps) => {
+const Content = ({
+  selectedCategory,
+  keyword,
+  onClick,
+  addProduct,
+}: ContentProps) => {
   // just stores the original product list
   const [products, setProducts] = useState<Product[]>([]);
   // will store product according chosen category
   const [productsByCat, setProductsByCat] = useState<Product[]>([]);
+  const [productQty, setProductQty] = useState(1);
+
   useEffect(() => {
     (async () => {
       const products = await talana.fetchProducts();
@@ -31,7 +40,6 @@ const Content = ({ selectedCategory, keyword }: ContentProps) => {
       setProductsByCat(prod);
     }
     if (keyword != "") {
-      console.log(keyword, "content");
       const options = {
         includeScore: true,
         keys: [
@@ -49,6 +57,8 @@ const Content = ({ selectedCategory, keyword }: ContentProps) => {
     }
   }, [selectedCategory, keyword]);
 
+  const handleProducts = () => {};
+
   return (
     <main className="content">
       <div>{selectedCategory?.name || "Productos"}</div>
@@ -56,16 +66,31 @@ const Content = ({ selectedCategory, keyword }: ContentProps) => {
       <div className="articles__container">
         {productsByCat.map((p) => (
           <div key={p.code} className="article__item">
-            <div className="article__image-container">
+            <div
+              className="article__image-container"
+              onClick={() => onClick(p)}
+            >
               <img src={p.photo} alt="image" />
             </div>
             <div className="article__detail">
-              <span>{p.name}</span>
-              <span>precio</span>
+              <span className="product__text">{p.name}</span>
+              <span className="product__text">precio</span>
             </div>
             <div className="article__action">
-              <input type="number" name="detailQty" id="" />
-              <button id="cart">add</button>
+              <input
+                type="number"
+                name={`detailQty-${p.code}`}
+                id=""
+                min={1}
+                defaultValue={1}
+                onChange={(e) => setProductQty(+e.target.value)}
+              />
+              <button
+                id="cart"
+                onClick={() => addProduct({ ...p, qty: productQty })}
+              >
+                add
+              </button>
             </div>
           </div>
         ))}

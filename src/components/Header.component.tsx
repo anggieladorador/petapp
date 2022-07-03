@@ -1,14 +1,23 @@
 import { useState } from "react";
+import { Product } from "../types/category.interface";
+
 type HeaderProps = {
   onSearch: (value: string) => void;
+  productList: Product[];
 };
-const Header = ({ onSearch }: HeaderProps) => {
+const Header = ({ onSearch, productList }: HeaderProps) => {
   const [value, setValue] = useState("");
+  const [isBagOpen, setIsBagOpen] = useState(false);
 
   const onChange = (value: string) => {
     setValue(value);
     onSearch(value);
   };
+
+  const shoppingListClassName = isBagOpen
+    ? "bag__container bag__container--active"
+    : "bag__container";
+
   return (
     <header className="header">
       <div className="logo__container">
@@ -22,7 +31,23 @@ const Header = ({ onSearch }: HeaderProps) => {
           value={value}
           onChange={(e) => onChange(e.target.value)}
         />
-        <span>bolsa</span>
+        <span
+          className="material-icons"
+          onClick={() => setIsBagOpen(!isBagOpen)}
+        >
+          shopping_bag
+        </span>
+        <div className={shoppingListClassName}>
+          <span>Resumen de compras</span>
+          <div>
+            {productList.map((p) => (
+              <>
+                <span>{p.name}</span>
+                <span>{p?.qty}</span>
+              </>
+            ))}
+          </div>
+        </div>
       </div>
     </header>
   );
