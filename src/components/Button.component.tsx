@@ -26,7 +26,7 @@ const Button = ({ text, onClick, variant, active }: ButtonProps) => {
 
 export const IconButton = ({ icon, onClick, variant }: ButtonProps) => {
   return (
-    <button className={`btn ${variant}`}>
+    <button className={`btn ${variant} clickeable`}>
       <span className="material-icons" onClick={onClick}>
         {icon}
       </span>

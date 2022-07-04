@@ -84,7 +84,7 @@ input:focus{
 section {
   display: grid;
   grid-template-columns: auto 1fr;
-  min-height: calc(100vh - 16px);
+  min-height: calc(100vh - 91px);
 }
 .sidebar {
   display: grid;
@@ -246,8 +246,42 @@ img{
   justify-content: space-around;
 }
 
-
 .content__title{
   font-size: 32px;
   color: var(--lila);
+}
+
+.pagination__container{
+  position: fixed;
+  display:flex;
+  gap: 16px;
+  bottom: 32px;
+  left:50%;
+}
+
+.step__button{
+  padding: 16px;
+  color:white;
+  background-color: var(--lila);
+  border:1px solid var(--lila);
+  font-weight: 500;
+  border-radius: 8px;
+}
+.step__button:hover{
+  padding: 16px;
+  color:white;
+  background-color: var(--dark-lila);
+  border:1px solid white;
+  font-weight: 500;
+  border-radius: 8px;
+}
+
+.step__button--active{
+  color:var(--lila);
+  background-color:white;
+}
+.step__button--active:hover{
+  color:var(--lila);
+  background-color:white;
+  border:1px solid var(--lila);
 }
