@@ -1,4 +1,4 @@
-import { TALANA_URL } from "../constants";
+import { TALANA_URL } from "../utils/constants";
 
 export class TalanaService {
   fetchCategories = async () => {

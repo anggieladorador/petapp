@@ -3,7 +3,6 @@ export interface Category {
   name: string;
   order: number;
 }
-
 interface Attribute {
   id: number;
   name: string;
@@ -21,3 +20,22 @@ export interface Product {
   attribute: Attribute[];
   qty: number;
 }
+
+export const emptyCategory = {
+  id: 0,
+  name: "",
+  order: 0,
+};
+
+export const emptyProduct = {
+  abstract: "",
+  category: emptyCategory,
+  attribute: [],
+  code: "",
+  description: "",
+  name: "",
+  photo: "",
+  price: 0,
+  stock: 0,
+  qty: 0,
+};

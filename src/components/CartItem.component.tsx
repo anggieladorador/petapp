@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { formatPrice } from "../common/utils";
+import { formatPrice } from "../utils/utils";
 import { Product } from "../types/category.interface";
 
 type ItemProps = {

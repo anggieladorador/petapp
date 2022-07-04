@@ -4,35 +4,23 @@ import Header from "./components/Header.component";
 import Drawer from "./components/Drawer.component";
 import Content from "./components/Content.section";
 import { TalanaService } from "./services/talana.services";
-import { Category, Product } from "./types/category.interface";
+import {
+  Category,
+  emptyCategory,
+  emptyProduct,
+  Product,
+} from "./types/category.interface";
 import ModalComponent from "./components/modal.component";
 
 const talana = new TalanaService();
 const App = () => {
   const [categories, setCategories] = useState([]);
   const [keyword, setKeyword] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<Category>({
-    id: 0,
-    name: "",
-    order: 0,
-  });
+  const [selectedCategory, setSelectedCategory] =
+    useState<Category>(emptyCategory);
   const [chosenProducts, setChosenProducts] = useState<Product[]>([]);
-  const [chosenProductToShow, setchosenProductToShow] = useState<Product>({
-    abstract: "",
-    category: {
-      id: 0,
-      name: "",
-      order: 0,
-    },
-    attribute: [],
-    code: "",
-    description: "",
-    name: "",
-    photo: "",
-    price: 0,
-    stock: 0,
-    qty: 0,
-  });
+  const [chosenProductToShow, setchosenProductToShow] =
+    useState<Product>(emptyProduct);
   const [isModalOpen, setisModalOpen] = useState(false);
 
   useEffect(() => {
