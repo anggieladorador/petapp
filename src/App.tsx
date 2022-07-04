@@ -9,7 +9,7 @@ import {
   emptyCategory,
   emptyProduct,
   Product,
-} from "./types/category.interface";
+} from "./types/interface";
 import ModalComponent from "./components/modal.component";
 
 const talana = new TalanaService();
