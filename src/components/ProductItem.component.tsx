@@ -14,7 +14,7 @@ export const ProductItem = ({
   onClick,
   addProduct,
 }: ProductItemProps) => {
-  const [productQty, setProductQty] = useState(product.qty);
+  const [productQty, setProductQty] = useState(1);
 
   return (
     <div key={product.code} className="article__item">
@@ -32,6 +32,7 @@ export const ProductItem = ({
           name={`detailQty-${product.code}`}
           id="product-input"
           min={0}
+          defaultValue={1}
           value={productQty}
           onChange={(e) => setProductQty(+e.target.value)}
         />

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { formatPrice } from "../utils/utils";
 import { Product } from "../types/category.interface";
+import CartItem from "./CartItem.component";
 
 type HeaderProps = {
   onSearch: (value: string) => void;
@@ -48,7 +49,7 @@ const Header = ({ onSearch, productList, addProduct }: HeaderProps) => {
         >
           shopping_bag
         </span>
-        {productList.length && (
+        {productList.length > 0 && (
           <div
             className="indicator"
             style={{
@@ -80,23 +81,7 @@ const Header = ({ onSearch, productList, addProduct }: HeaderProps) => {
             }}
           >
             {productList.map((p) => (
-              <>
-                <div style={{ display: "flex", flexDirection: "column" }}>
-                  <span style={{ fontSize: 14, fontWeight: 500 }}>
-                    {p.name}
-                  </span>
-                  <span>{formatPrice(p.price)}</span>
-                </div>
-                <div>
-                  <input
-                    type="number"
-                    style={{ width: 60 }}
-                    defaultValue={p.qty}
-                    onChange={(e) => addProduct({ ...p, qty: +e.target.value })}
-                  />
-                </div>
-                <span>Sub-total: {p.qty && formatPrice(p?.qty * p.price)}</span>
-              </>
+              <CartItem addProduct={(p) => addProduct(p)} product={p} />
             ))}
             <div>
               <span>SubtTotal: {formatPrice(totalPrice())}</span>
