@@ -22,7 +22,7 @@ const ModalComponent = ({ open, product, onClose, addProduct }: ModalProps) => {
     <Modal open={open} onClose={onClose}>
       <>
         <div className="modal__container">
-          <h2>Producto Agregado</h2>
+          <h3>Producto Agregado</h3>
           <div className="modal__body">
             <div className="modal__image--container">
               <img src={product?.photo} alt={product?.name} />

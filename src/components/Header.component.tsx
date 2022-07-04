@@ -48,6 +48,25 @@ const Header = ({ onSearch, productList, addProduct }: HeaderProps) => {
         >
           shopping_bag
         </span>
+        {productList.length && (
+          <div
+            className="indicator"
+            style={{
+              position: "absolute",
+              height: 20,
+              width: 20,
+              borderRadius: "50%",
+              color: "white",
+              backgroundColor: "red",
+              display: "flex",
+              justifyContent: "center",
+              right: -10,
+              top: 20,
+            }}
+          >
+            {productList.length}
+          </div>
+        )}
         <div className={shoppingListClassName}>
           <span style={{ fontSize: 16 }}>Resumen de compras</span>
           <div
@@ -72,8 +91,6 @@ const Header = ({ onSearch, productList, addProduct }: HeaderProps) => {
                   <input
                     type="number"
                     style={{ width: 60 }}
-                    name=""
-                    id=""
                     defaultValue={p.qty}
                     onChange={(e) => addProduct({ ...p, qty: +e.target.value })}
                   />

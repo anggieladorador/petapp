@@ -37,7 +37,10 @@ const Drawer = ({ categories, onClick, selectedCategory }: CategoryProps) => {
           </div>
         </>
       ) : (
-        <span className="material-icons" onClick={() => setOpen(!open)}>
+        <span
+          className="material-icons clickeable"
+          onClick={() => setOpen(!open)}
+        >
           menu
         </span>
       )}

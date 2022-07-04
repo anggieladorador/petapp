@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
+import Fuse from "fuse.js";
 import { TalanaService } from "../services/talana.services";
 import { Category, Product } from "../types/category.interface";
-import Fuse from "fuse.js";
-import { ButtonClasses, IconButton } from "./Button.component";
+import { ProductItem } from "./ProductItem.component";
 
 const talana = new TalanaService();
 
@@ -22,7 +22,6 @@ const Content = ({
   const [products, setProducts] = useState<Product[]>([]);
   // will store product according chosen category
   const [productsByCat, setProductsByCat] = useState<Product[]>([]);
-  const [productQty, setProductQty] = useState(1);
 
   useEffect(() => {
     (async () => {
@@ -34,13 +33,13 @@ const Content = ({
 
   // set products if there is any category selected
   useEffect(() => {
-    if (selectedCategory?.id != 0) {
+    if (selectedCategory?.id !== 0) {
       const prod = products.filter(
         (product) => product.category.id === selectedCategory?.id
       );
       setProductsByCat(prod);
     }
-    if (keyword != "") {
+    if (keyword !== "") {
       const options = {
         includeScore: true,
         keys: [
@@ -56,43 +55,39 @@ const Content = ({
       const prod = list.map((l) => l.item);
       setProductsByCat(prod);
     }
-  }, [selectedCategory, keyword]);
-
-  const handleProducts = () => {};
+  }, [selectedCategory, products, keyword]);
 
   return (
     <main className="content">
-      <div>{selectedCategory?.name || "Productos"}</div>
-      <div className="breadcrumb__container">breadcrumb</div>
+      <div>
+        <h2 className="content__title">
+          {selectedCategory?.name ||
+            (keyword !== "" && ` Resultados de búsqueda: ${keyword}`) ||
+            "Productos"}
+        </h2>
+      </div>
+      <div className="breadcrumb">
+        <span>Home</span>
+        <span className="material-icons breadcrumb__divider">
+          keyboard_arrow_right
+        </span>
+        <span>Categorias</span>
+        {selectedCategory?.id !== 0 && (
+          <>
+            <span className="material-icons breadcrumb__divider">
+              keyboard_arrow_right
+            </span>
+            <span>{selectedCategory?.name}</span>
+          </>
+        )}
+      </div>
       <div className="articles__container">
         {productsByCat.map((p) => (
-          <div key={p.code} className="article__item">
-            <div
-              className="article__image-container"
-              onClick={() => onClick(p)}
-            >
-              <img src={p.photo} alt="image" />
-            </div>
-            <div className="article__detail">
-              <span className="product__text">{p.name}</span>
-              <span className="product__text">precio</span>
-            </div>
-            <div className="article__action">
-              <input
-                type="number"
-                name={`detailQty-${p.code}`}
-                id=""
-                min={1}
-                defaultValue={1}
-                onChange={(e) => setProductQty(+e.target.value)}
-              />
-              <IconButton
-                variant={ButtonClasses.icon}
-                icon="shopping_cart"
-                onClick={() => addProduct({ ...p, qty: productQty })}
-              />
-            </div>
-          </div>
+          <ProductItem
+            addProduct={(p) => addProduct(p)}
+            onClick={onClick}
+            product={p}
+          />
         ))}
       </div>
     </main>

@@ -62,10 +62,10 @@ const App = () => {
     );
 
     if (product.qty === 0) {
-      setChosenProducts(prevProductList);
+      setChosenProducts((prev) => prevProductList);
     } else {
       // if there is already that product, updates is Qty
-      setChosenProducts([...prevProductList, product]);
+      setChosenProducts((prev) => [...prevProductList, product]);
     }
   };
 
