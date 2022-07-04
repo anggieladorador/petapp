@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { formatPrice } from "../utils/utils";
-import { Product } from "../types/category.interface";
+import { Product } from "../types/interface";
 
 type ItemProps = {
   product: Product;

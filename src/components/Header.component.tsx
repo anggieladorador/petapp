@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { formatPrice } from "../utils/utils";
-import { Product } from "../types/category.interface";
+import { Product } from "../types/interface";
 import CartItem from "./CartItem.component";
 
 type HeaderProps = {

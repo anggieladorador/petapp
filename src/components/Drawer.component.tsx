@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Category } from "../types/category.interface";
+import { Category } from "../types/interface";
 import Button, { ButtonClasses } from "./Button.component";
 
 export type CategoryProps = {

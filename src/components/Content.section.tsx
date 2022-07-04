@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Fuse from "fuse.js";
 import { TalanaService } from "../services/talana.services";
-import { Category, Product } from "../types/category.interface";
+import { Category, Product } from "../types/interface";
 import { ProductItem } from "./ProductItem.component";
 import Pagination from "./Pagination.component";
 

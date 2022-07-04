@@ -1,7 +1,7 @@
-import { Box, Modal } from "@material-ui/core";
+import { Modal } from "@material-ui/core";
 import { useState } from "react";
 import { formatPrice } from "../utils/utils";
-import { Product } from "../types/category.interface";
+import { Product } from "../types/interface";
 import Button, { ButtonClasses } from "./Button.component";
 
 type ModalProps = {
